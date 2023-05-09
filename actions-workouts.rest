@@ -1,0 +1,90 @@
+# My Variables
+@contentType = application/json
+@baseurl = http://localhost:3000/api
+# @baseurl =https://backend-v1-qbgm.onrender.com/api
+
+
+### POST Request
+POST {{baseurl}}/workouts/
+Content-Type: application/json
+
+{
+    "title":"situps 3",
+    "reps":40,
+    "load":10
+}
+
+
+### PATCH  Request
+PATCH {{baseurl}}/workouts/6410037c98438a7a7d2a05cd
+Content-Type: application/json
+
+{
+    "reps":579,
+    "load":544
+}
+
+
+### GET Request
+GET {{baseurl}}/workouts
+Content-Type: {{contentType}
+
+### GET Request
+GET {{baseurl}}/workouts/6377bba279bd79cae50494cf
+Content-Type: {{contentType}
+
+### GET Request (does not exist)
+GET {{baseurl}}/workouts/6410037c98438a7a7d2a05cd
+Content-Type: {{contentType}
+
+### DELET Request
+DELETE {{baseurl}}/workouts/6377bb0a79bd79cae50494c2
+Content-Type: application/json
+
+### DELET Request  (does not exist)
+DELETE {{baseurl}}/workouts/6251a0ed1317e5dff269f8aa
+Content-Type: application/json
+
+### unknown end point
+GET {{baseurl}}/workoutsss/15
+Content-Type: {{contentType}
+
+
+
+###
+POST {{baseurl}}/workouts/ HTTP/1.1
+content-type: application/json
+
+{
+    "title":"workout 10",
+    "reps":54,
+    "load":64
+}
+
+###
+POST {{baseurl}}/workouts/ HTTP/1.1
+content-type: application/json
+
+{
+    "title":"workout 9",
+    "reps":554,
+    "load":544
+}
+
+###
+POST  {{baseurl}}/user/signup
+Content-Type: {{contentType}}
+
+{
+    "email": "mirja27@mirja.fi",
+    "password": "45RFgh##@$"
+}
+
+###
+POST  {{baseurl}}/user/login
+Content-Type: {{contentType}}
+
+{
+    "email": "mirja5@mirja.fi",
+    "password": "45RFgh##@$"
+}

@@ -1,0 +1,43 @@
+{{#if data}}
+<div id="readinessContainer" style="height: 300px; width: 100%;"></div>
+
+{{!-- {{data.user_info.sub}} --}}
+
+<script type="text/javascript">
+    const data = {{{ json data }}};
+    window.onload = function () {
+
+        const readiness = [];
+        const readinessOptions= {
+            theme: 'light1', // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Daily Readiness"
+            },
+            data: [{
+                type: "line",
+                showInLegend: 'true',
+                name: 'Readiness',
+                color: '#81c784',
+                xValueType: 'dateTime',
+                xValueFormatString: 'DD MMM YY HH:mm',
+                yValueFormatString: '#.##',
+                legendMarkerType: 'square',               
+                dataPoints: readiness,
+            }]
+        }
+        const chart = new CanvasJS.Chart("readinessContainer", readinessOptions );
+
+        data.results.forEach((item) => {
+            readiness.push({ 
+                x: new Date(item.create_timestamp).getTime(),               
+                y: parseFloat(item.result.readiness),
+            });
+        })
+        //console.log(data.user_info.sub);
+        chart.render();
+    }
+</script>
+
+{{else}}
+<p>You don't have data</p>
+{{/if}}
